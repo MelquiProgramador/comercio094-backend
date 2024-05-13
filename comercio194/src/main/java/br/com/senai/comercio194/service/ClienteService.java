@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.senai.comercio194.entity.Cliente;
 import br.com.senai.comercio194.repository.ClienteRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ClienteService {
@@ -15,21 +16,25 @@ public class ClienteService {
     private ClienteRepository ClienteRepository;
 
 
-    // listar todos os Clientes
+    // AQUI ESTÁ UM !CRUD!
+    // CRUD(create) R(read) U(update) D(delete)
+
+    // listar todos os Clientes - CR(read) U D - CRUD(read)
     public List<Cliente> findAll(){
         return ClienteRepository.findAll();
     }
 
+    // listar o cliente pelo ID - CR(read) U D - CRUD(read)
     public Cliente findById(Long id){
-        return ClienteRepository.findById(id).orElse(null);
+        return ClienteRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com o id: " + id));
     }
 
-    // inserir um Cliente
-    public Cliente insertNew(Cliente Cliente){
-        return ClienteRepository.save(Cliente);
+    // inserir um Cliente - C(create) RUD - CRUD(create)
+    public Cliente insertNew(Cliente cliente){
+        return ClienteRepository.save(cliente);
     }
 
-    // alterar Cliente 
+    // alterar Cliente - CRU(update) D - CRUD(update)
     public Cliente update(Long id, Cliente ClienteAlterado){
         Cliente ClienteAtual = findById(id);
         ClienteAtual.setNome(ClienteAlterado.getNome());
@@ -40,10 +45,10 @@ public class ClienteService {
         return ClienteAtual;
     }
 
-    // Apagar um Cliente
+    // Apagar um Cliente - CRUD(delete) - CRUD(delete)
     public Boolean deleteById(Long id) {
-        Cliente Cliente = findById(id);
-    if (Cliente == null) {
+        Cliente cliente = findById(id);
+    if (cliente == null) {
         return false;
     }else{
         ClienteRepository.deleteById(id);

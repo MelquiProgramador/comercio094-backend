@@ -23,6 +23,7 @@ public class Produto {
     private Double preco;
     private int quantidade;
 
+    // ligação com a tabela de vendas
     @OneToMany(mappedBy = "produto")
     private List<Vendas> vendas;
 

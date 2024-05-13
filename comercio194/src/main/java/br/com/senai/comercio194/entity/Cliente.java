@@ -1,5 +1,6 @@
 package br.com.senai.comercio194.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -25,5 +26,13 @@ public class Cliente {
 
     // ligação com a tabela de vendas
     @OneToMany(mappedBy = "cliente")
-    private List<Vendas> vendas;
+    private List<Vendas> vendas = new ArrayList<>();
+
+    // Construtor
+    public Cliente(String nome, String email, String telefone, String endereco) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 }

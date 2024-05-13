@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Comercio194Application<comercio194>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.senai.comercio194.Comercio194Application",
+            "projectName": "comercio194",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
