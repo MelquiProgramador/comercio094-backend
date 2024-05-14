@@ -25,6 +25,10 @@ public class Produto {
 
     // ligação com a tabela de vendas
     @OneToMany(mappedBy = "produto")
-    private List<Vendas> vendas;
+    private List<Venda> vendas;
 
+    //Construtor
+    public Produto(int id) {
+        this.id = Long.valueOf(id);
+    }
 }

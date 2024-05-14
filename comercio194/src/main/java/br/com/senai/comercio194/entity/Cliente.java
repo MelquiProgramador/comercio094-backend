@@ -26,13 +26,10 @@ public class Cliente {
 
     // ligação com a tabela de vendas
     @OneToMany(mappedBy = "cliente")
-    private List<Vendas> vendas = new ArrayList<>();
+    private List<Venda> vendas = new ArrayList<>();
 
     // Construtor
-    public Cliente(String nome, String email, String telefone, String endereco) {
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.endereco = endereco;
+    public Cliente(int id) {
+        this.id = Long.valueOf(id);
     }
 }
