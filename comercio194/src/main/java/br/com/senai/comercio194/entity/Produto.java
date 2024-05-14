@@ -22,13 +22,4 @@ public class Produto {
     private String descricao;
     private Double preco;
     private int quantidade;
-
-    // ligação com a tabela de vendas
-    @OneToMany(mappedBy = "produto")
-    private List<Venda> vendas;
-
-    //Construtor
-    public Produto(int id) {
-        this.id = Long.valueOf(id);
-    }
 }

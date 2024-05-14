@@ -24,10 +24,6 @@ public class Cliente {
     private String telefone;
     private String endereco;
 
-    // ligação com a tabela de vendas
-    @OneToMany(mappedBy = "cliente")
-    private List<Venda> vendas = new ArrayList<>();
-
     // Construtor
     public Cliente(int id) {
         this.id = Long.valueOf(id);
